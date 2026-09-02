@@ -1,11 +1,13 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
+const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+
 const pool = new Pool(
-  process.env.DATABASE_URL
+  connectionString
     ? {
-        connectionString: process.env.DATABASE_URL,
-        ssl: { rejectUnauthorized: false }, // Enables required SSL for hosted Postgres
+        connectionString,
+        ssl: { rejectUnauthorized: false }, // Required for Neon connection
       }
     : {
         user: process.env.PGUSER,
