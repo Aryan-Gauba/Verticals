@@ -25,16 +25,25 @@ function App() {
     }
   }, []);
 
-  const loadHabits = async () => {
-    try {
-      const { data } = await fetchHabits();
-      setHabits(data);
-    } catch (err) {
-      if (err.response?.status === 401 || err.response?.status === 403) {
-        handleLogout();
-      }
+  const getLocalTodayDate = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+const loadHabits = async () => {
+  try {
+    const todayStr = getLocalTodayDate();
+    const { data } = await fetchHabits(todayStr); // Ensure your api.js passes ?client_date=${todayStr}
+    setHabits(data);
+  } catch (err) {
+    if (err.response?.status === 401 || err.response?.status === 403) {
+      handleLogout();
     }
-  };
+  }
+};
 
   useEffect(() => {
     if (user) {

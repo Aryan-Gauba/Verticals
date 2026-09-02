@@ -15,7 +15,7 @@ API.interceptors.request.use((config) => {
 
 export const registerUser = (userData) => API.post('/auth/register', userData);
 export const loginUser = (userData) => API.post('/auth/login', userData);
-export const fetchHabits = () => API.get('/habits');
+export const fetchHabits = (client_date) => API.get(`/habits?client_date=${client_date}`);
 export const createHabit = (title) => API.post('/habits', { title });
 export const logHabit = (id, date) => API.post(`/habits/${id}/log`, { date });
 export const deleteHabit = (id) => API.delete(`/habits/${id}`);
