@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Rounded container background -->
+  <rect x="0" y="0" width="64" height="64" rx="16" fill="#ffffff" />
+  
+  <!-- "V" path matching your navbar logo geometry -->
+  <path 
+    d="M 18 18 L 32 46 L 46 18 H 37.5 L 32 34 L 26.5 18 Z" 
+    fill="#000000" 
+  />
+</svg>
